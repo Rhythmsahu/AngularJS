@@ -1,21 +1,10 @@
-var student={
-  name: "",
-  type: "student"
-};
+(function () {
+//'use strict';
 
-document.addEventListener('DOMContentLoaded', contentLoaded);
+x="hello";
 
-function contentLoaded(event) {
-  document.getElementById('name').addEventListener("keyup",keyUp);
-}
+  angular.module('myFirstApp',[])
+  .controller('MyFirstController',function () {
 
-function keyUp(event){
-  calculateNumericOutput();
-}
-
-function calculateNumericOutput(){
-  var n=document.getElementById('name').value;
-
-
-  document.getElementById('output').innerText=n;
-}
+  })
+})();
