@@ -1,21 +1,34 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" ng-app="NameCalculator">
+<!doctype html>
+<html lang="en" ng-app="LunchCheck">
   <head>
-    <meta charset="utf-8">
     <script src="angular.min.js">
     </script>
     <script src="app.js">
     </script>
-    <title>Hello World</title>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
   </head>
-  <body ng-controller="NameCalculatorController">
-    <h1>Name Calculator</h1>
-    <div class="">
-    Your name:  <input type="text" name="" value="" ng-model="name"
-    ng-keyup="display();" ng-blur="upper();">
-    </div>
-    <div class="">
-      Total numeric value is:{{total}}
-    </div>
-  </body>
+<body>
+   <div class="container" ng-controller="LunchCheckController">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <input id="lunch-menu" type="text"
+             placeholder="list comma separated dishes you usually have for lunch"
+             class="form-control" ng-model="list">
+         </div>
+         <div class="form-group">
+             <button class="btn btn-default" ng-click="checkIfTooMuch();">Check If Too Much</button>
+         </div>
+         <div class="form-group message">
+           {{message}}
+           <!-- Your message can go here. -->
+         </div>
+   </div>
+
+</body>
 </html>

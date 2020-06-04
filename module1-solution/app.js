@@ -1,30 +1,25 @@
 (function () {
-  'use strict';
+  angular.module('LunchCheck',[])
+  .controller('LunchCheckController',LunchCheckController);
+  LunchCheckController.$inject=['$scope'];
 
-  angular.module('NameCalculator',[])
-  .controller('NameCalculatorController',NameCalculatorController);
-
-  function NameCalculatorController($scope,$filter,$injector) {
-    $scope.name="";
-    $scope.total=0;
-
-    $scope.display=function () {
-      $scope.total=calculateValue($scope.name);
-      //$scope.total=totalNumeric;
+  function LunchCheckController($scope) {
+    $scope.list="";
+    $scope.checkIfTooMuch=function () {
+      $scope.message=checkIfTooMuch($scope.list)
     }
 
-    $scope.upper=function () {
-      var upCase=$filter('uppercase');
-      $scope.name=upCase($scope.name);
+    function checkIfTooMuch(str) {
+      var arr=str.split(",");
+      var m="";
+      if(arr.length<=3){
+        m="Enjoy";
     }
-    };
-
-    function calculateValue(string) {
-      var totalString=0;
-      for (var i = 0; i < string.length; i++) {
-        totalString+=string.charCodeAt(i);
-      }
-      return totalString;
-    };
+    else {
+      m="Too Much!";
+    }
+    return m;
+  };
+};
 
 })();
