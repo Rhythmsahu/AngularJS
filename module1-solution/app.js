@@ -19,12 +19,15 @@
       var m="";
       if(str===""){
         m="Please enter data first"
+        $scope.color="red";
       }
       else if(arr.length<=3){
-        m="Enjoy";
+        m="Enjoy!";
+        $scope.color="green";
     }
     else {
       m="Too Much!";
+      $scope.color="green";
     }
     return m;
   };
