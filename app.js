@@ -1,30 +1,45 @@
 (function () {
-  'use strict';
+'use strict';
 
-  angular.module('NameCalculator',[])
-  .controller('NameCalculatorController',NameCalculatorController);
+angular.module('MsgApp', [])
+.controller('MsgController', MsgController)
+.filter('loves', LovesFilter)
+.filter('truth', TruthFilter);
 
-  function NameCalculatorController($scope,$filter,$injector) {
-    $scope.name="";
-    $scope.total=0;
+MsgController.$inject = ['$scope', 'lovesFilter'];
+function MsgController($scope, lovesFilter) {
+  $scope.stateOfBeing = "hungry";
 
-    $scope.display=function () {
-      $scope.total=calculateValue($scope.name);
-      //$scope.total=totalNumeric;
-    }
+  $scope.sayMessage = function () {
+    var msg = "Yaakov likes to eat healthy snacks at night!";
+    return msg;
+  };
 
-    $scope.upper=function () {
-      var upCase=$filter('uppercase');
-      $scope.name=upCase($scope.name);
-    }
-    };
+  $scope.sayLovesMessage = function () {
+    var msg = "Yaakov likes to eat healthy snacks at night!";
+    msg = lovesFilter(msg)
+    return msg;
+  };
 
-    function calculateValue(string) {
-      var totalString=0;
-      for (var i = 0; i < string.length; i++) {
-        totalString+=string.charCodeAt(i);
-      }
-      return totalString;
-    };
+  $scope.feedYaakov = function () {
+    $scope.stateOfBeing = "fed";
+  };
+}
+
+function LovesFilter() {
+  return function (input) {
+    input = input || "";
+    input = input.replace("likes", "loves");
+    return input;
+  };
+}
+
+function TruthFilter() {
+  return function (input, target, replace) {
+    input = input || "";
+    input = input.replace(target, replace);
+    return input;
+  }
+}
 
 })();

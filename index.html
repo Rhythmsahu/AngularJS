@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" ng-app="NameCalculator">
+<html ng-app='MsgApp'>
   <head>
     <meta charset="utf-8">
-    <script src="angular.min.js">
-    </script>
-    <script src="app.js">
-    </script>
-    <title>Hello World</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.2em; }</style>
+    <title>Custom Filters</title>
   </head>
-  <body ng-controller="NameCalculatorController">
-    <h1>Name Calculator</h1>
-    <div class="">
-    Your name:  <input type="text" name="" value="" ng-model="name"
-    ng-keyup="display();" ng-blur="upper();">
-    </div>
-    <div class="">
-      Total numeric value is:{{total}}
+  <body>
+    <h1>Custom Filters</h1>
+    <div ng-controller='MsgController'>
+      Original: {{sayMessage()}} <br>
+      Loves: {{ sayLovesMessage() }} <br>
+      Truth: {{ sayLovesMessage() | truth : 'healthy' : 'cookie' }} <br>
+      BIG TRUTH: {{ sayLovesMessage() | truth : 'healthy' : 'cookie' | uppercase }}
+      <div>
+        <button ng-click="feedYaakov()">Feed Yaakov</button>
+        <br>
+
+        <img ng-src="images/yaakov_{{stateOfBeing}}.png">
+      </div>
     </div>
   </body>
 </html>
